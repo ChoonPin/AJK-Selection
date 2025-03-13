@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRATEGI CEMERLANG: TIP & TEKNIK 
+        TUGASAN</title>
+</head>
+<body>
+    <h2>STRATEGI CEMERLANG: TIP & TEKNIK 
+        TUGASAN (25 APRIL 2025)</h2>
+
+    <form id="ajkForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required>
+
+        <label for="matricNumber">Matric Number:</label>
+        <input type="text" id="matricNumber" required>
+
+        <label for="positionSelect">Select Position:</label>
+        <select id="positionSelect"></select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <h3>Available Positions</h3>
+    <ul id="positionList"></ul>
+
+    <!-- Firebase Modular SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, doc, setDoc, getDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5-xPgSC-sdDYVQ83TqV6qA9ET4VHcnww",
+            authDomain: "ajk-ea44c.firebaseapp.com",
+            projectId: "ajk-ea44c",
+            storageBucket: "ajk-ea44c.firebasestorage.app",
+            messagingSenderId: "550394860489",
+            appId: "1:550394860489:web:3acfb93468c54984368e18",
+            measurementId: "G-W2TXVRE6N4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Expose Firebase to the app.js script
+        window.db = db;
+        window.firestoreFunctions = { collection, getDocs, doc, setDoc, getDoc, updateDoc, onSnapshot };
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
