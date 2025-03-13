@@ -63,10 +63,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let fullName = document.getElementById("fullName").value.trim();
         let matricNumber = document.getElementById("matricNumber").value.trim();
+        let phoneNumber = document.getElementById("phoneNumber").value.trim();
         let positionId = positionSelect.value;
 
-        if (!fullName || !matricNumber || !positionId) {
+        if (!fullName || !matricNumber || !phoneNumber || !positionId) {
             alert("Please fill in all fields.");
+            return;
+        }
+
+        // Validate phone number format (Malaysian format)
+        const phoneRegex = /^01[0-9]-?[0-9]{7,8}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            alert("Please enter a valid phone number (e.g. 012-3456789 or 0123456789).");
             return;
         }
 
@@ -87,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
             await setDoc(doc(applicationsRef, matricNumber), {
                 fullName: fullName,
                 matricNumber: matricNumber,
+                phoneNumber: phoneNumber,
                 position: positionId,
                 timestamp: new Date()
             });
